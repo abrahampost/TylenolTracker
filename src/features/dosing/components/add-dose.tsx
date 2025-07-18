@@ -5,14 +5,19 @@ import { useState } from "react";
 
 export const AddDose = () => {
     const { addDose } = useDoses();
-    const [timestamp, setTimestamp] = useState(new Date());
+    const [timestamp, setTimestamp] = useState(() => {
+      const now = new Date();
+      return new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+    });
 
     const onAddDose = (size: number) => {
-        addDose(size, timestamp);
+        // Convert local timestamp back to UTC before storing
+        const utcTimestamp = new Date(timestamp.getTime() + timestamp.getTimezoneOffset() * 60000);
+        addDose(size, utcTimestamp);
     };
 
     return (
-    <Stack spacing={2} sx={{ width: '50%' }}>
+    <Stack spacing={2}>
       <h2>Add Dose</h2>
       <label htmlFor="dose-timestamp">Dose taken at:</label>
       <input

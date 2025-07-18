@@ -7,7 +7,8 @@ export const DosesList = () => {
     const { removeDose } = useDoses();
 
     const handleRemoveDose = (id: number) => {
-        removeDose(id);
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        window.confirm("Are you sure you want to remove this dose?") && removeDose(id);
     };
 
     if (isLoading) {

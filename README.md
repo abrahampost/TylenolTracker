@@ -1,4 +1,8 @@
-# React + TypeScript + Vite
+# TylenolTracker
+
+This is a work in progress for personal use, DO NOT USE THIS TO TRACK YOUR TYLENOL CONSUMPTION. I HAVE NOT WRITTEN TESTS YET.
+
+# Default Readme
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
