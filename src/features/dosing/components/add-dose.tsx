@@ -16,6 +16,13 @@ export const AddDose = () => {
         addDose(size, utcTimestamp);
     };
 
+    const updateTimestamp = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const localDate = new Date(e.target.value);
+        // Convert local date to UTC
+        const utcDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
+        setTimestamp(utcDate);
+    }
+
     return (
     <Stack spacing={2}>
       <h2>Add Dose</h2>
@@ -24,7 +31,7 @@ export const AddDose = () => {
         id="dose-timestamp"
         type="datetime-local"
         value={timestamp.toISOString().slice(0, 16)}
-        onChange={(e) => setTimestamp(new Date(e.target.value))}
+        onChange={updateTimestamp}
         style={{ marginLeft: '10px', marginBottom: '10px' }}
       />
       <div>

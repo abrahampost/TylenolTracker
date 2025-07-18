@@ -26,7 +26,7 @@ export const useNextDose = () => {
         } else {
             // If the dose exceeds the safe limit, can take later
             let runningTotal = total;
-            for(let i = 0; i < doses.length; i++) {
+            for(let i = doses.length - 1; i >= 0; i--) {
                 runningTotal -= doses[i].amount;
                 if (runningTotal + size <= SAFE_DOSE_LIMIT) {
                     possibleDoses.push({
